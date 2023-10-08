@@ -1,37 +1,21 @@
-import React, { useState } from "react";
-import { FlatList, StyleSheet, View, Text } from "react-native"; // Добавлен импорт компонента Text
-import Header from "./components/Header";
-import ListItem from "./components/ListItem";
-import Form from "./components/Form";
-
+import React from "react";
+import { View, StyleSheet, Text, ImageBackground } from "react-native";
+import image from './image/mountBG.png'
+import SignIn from "./components/Auth/SignIn";
 export default function App() {
-  const [listofItems, setListofItems] = useState([
-    { text: "Купить ноут", index: 1 },
-    { text: "Сходить в магаз", index: 2 },
-    { text: "Купить машину", index: 3 },
-    { text: "Порезать ножницы", index: 4 },
-  ]);
   return (
-    <View style={styles.container}>
-      <Header />
-
-<Form/>
-
-      <View>
-        <FlatList
-          data={listofItems}
-          renderItem={({ item }) => (<ListItem item={item}/>)} 
-        />
-      </View>
-    </View>
+   <ImageBackground source={image} style={styles.container}>
+    <SignIn style={styles.auth}/>
+   </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   backgroundColor: '#fff',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent:'flex-end'
+  },
+  auth:{  
+  }
 });
