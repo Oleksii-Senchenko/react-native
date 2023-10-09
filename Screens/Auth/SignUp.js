@@ -11,12 +11,17 @@ const SignUp = () => {
   return (
     <View style={styles.auth}>
       <Text style={styles.mainText}>Реєстрація</Text>
-      <TextInput style={styles.input} placeholder="Name" />
-      <TextInput style={styles.input} placeholder="Email" />
-      <TextInput
-        style={{ ...styles.input, ...styles.inputLast }}
-        placeholder="Password"
-      />
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.input} placeholder="Name" />
+        <TextInput style={styles.input} placeholder="Email" />
+        <TextInput
+          style={{ ...styles.input, ...styles.inputLast }}
+          placeholder="Password"
+        />
+        <TouchableOpacity style={styles.showPasswordBtn}>
+          <Text style={styles.showPasswordText}>Показати</Text>
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity style={styles.buton}>
         <Text style={styles.btnText}>Зареєстуватися</Text>
       </TouchableOpacity>
@@ -58,6 +63,17 @@ const styles = StyleSheet.create({
   },
   inputLast: {
     marginBottom: 27,
+    position: "relative",
+  },
+  showPasswordBtn: {
+    position: "absolute",
+    top: 145,
+    right: 15,
+  },
+  showPasswordText: {
+    color: "#1B4371",
+    textAlign: "right",
+    fontSize: 16,
   },
 
   buton: {
