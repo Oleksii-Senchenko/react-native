@@ -1,9 +1,9 @@
 import { launchImageLibraryAsync } from "expo-image-picker";
 import { AntDesign } from "@expo/vector-icons";
+
 import { useState } from "react";
 import {
   Button,
-  Image,
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
@@ -15,55 +15,54 @@ const ImagePicker = () => {
 
   const addPhoto = async () => {
     const result = await launchImageLibraryAsync();
+
     if (result.assets) {
-      setAvatar(result.uri);
+      setAvatar(result.assets[0].uri);
     }
   };
+  const deletePhoto = () => {
+    setAvatar(null);
+  };
 
-  return (
-    <ImageBackground source={{ uri: avatar }} style={styles.avatarImage}>
-      {avatar ? (
-        <View  >
-          <Image source={{ uri: avatar }} style={styles.avatarImage} />
-          <AntDesign name="close" size={24} color="black" style={styles.closeIcon} />
-        </View>
-      ) : (
-        <TouchableOpacity onPress={addPhoto}>
-          <View style={styles.grayBackground}>
-            <AntDesign name="plus" size={48} color="black" />
-          </View>
+  let content = null;
+
+  if (avatar) {
+    content = (
+      <View style={styles.gray}>
+        <ImageBackground source={{ uri: avatar }} style={{...styles.avatarImage, ...styles.gray}}>
+          <TouchableOpacity onPress={deletePhoto} style={styles.IconContainer}>
+            <AntDesign
+              name="closecircleo"
+              color="black"
+              style={styles.closeIcon}
+            />
+          </TouchableOpacity>
+        </ImageBackground>
+      </View>
+    );
+  } else {
+    content = (
+      <View style={styles.grayBackground}>
+        <TouchableOpacity onPress={addPhoto} style={styles.IconContainer}>
+          <AntDesign name="pluscircleo" color="black" style={styles.addIcon} />
         </TouchableOpacity>
-      )}
-    </ImageBackground>
-  );
+      </View>
+    );
+  }
+
+  return <View>{content}</View>;
 };
-//   return (
-//     <TouchableOpacity onPress={addPhoto}>
-//       {avatar ? (
-//         <Image source={{ uri: avatar }} style={styles.avatarImage} />
-//       ) : (
-//         <View style={styles.grayBackground}>
-//           <AntDesign name="plus" size={48} color="black" />
-//         </View>
-//       )}
-//     </TouchableOpacity>
-//   );
-// };
 
 export default ImagePicker;
 
 const styles = StyleSheet.create({
-  addAvatar: {
+  avatarImage: {
     width: 120,
     height: 120,
     borderRadius: 16,
   },
-  avatarImage: {
-    borderRadius: 16,
-  },
-  closeIcon:{
-    position:'absolute',
-  },
+  gray: { borderRadius: 16 },
+
   grayBackground: {
     width: 120,
     height: 120,
@@ -72,7 +71,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  IconContainer: {
+    position: "absolute",
+    bottom: 12,
+    right: -12,
+  },
+  addIcon: {
+    fontSize: 24,
+    color: "orange",
+  },
+  closeIcon: {
+    fontSize: 24,
+    color: "#BDBDBD",
+  },
 });
-
-
-

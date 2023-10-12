@@ -24,6 +24,7 @@ const SignUp = () => {
         <TextInput
           style={{ ...styles.input, ...styles.inputLast }}
           placeholder="Password"
+          secureTextEntry={true}
         />
 
         <TouchableOpacity style={styles.showPasswordBtn}>
