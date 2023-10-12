@@ -1,3 +1,5 @@
+import LogButton from '../../components/Button/LogButton'
+
 import {
   StyleSheet,
   Text,
@@ -15,13 +17,14 @@ const SignIn = () => {
         <TextInput
           style={{ ...styles.input, ...styles.inputLast }}
           placeholder="Password"
+          secureTextEntry={true}fds
         />
         <TouchableOpacity style={styles.showPasswordBtn}>
           <Text style={styles.showPasswordText}>Показати</Text>
         </TouchableOpacity>
       </View>
 
-      {/* <LogButton /> */}
+      <LogButton />
 
       <TouchableOpacity>
         <Text style={styles.linkText}>Немає акаунту? Зареєструватися</Text>

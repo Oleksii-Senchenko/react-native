@@ -7,18 +7,26 @@ import {
   View,
 } from "react-native";
 import LogButton from "../../components/Button/LogButton";
+import ImagePicker from "../../components/ImagePicker/ImagePicker";
 
 const SignUp = () => {
   return (
     <View style={styles.auth}>
+      <View style={styles.imagePicker}>
+        <ImagePicker />
+      </View>
+
       <Text style={styles.mainText}>Реєстрація</Text>
+
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} placeholder="Name" />
         <TextInput style={styles.input} placeholder="Email" />
         <TextInput
           style={{ ...styles.input, ...styles.inputLast }}
           placeholder="Password"
+          secureTextEntry={true}
         />
+
         <TouchableOpacity style={styles.showPasswordBtn}>
           <Text style={styles.showPasswordText}>Показати</Text>
         </TouchableOpacity>
@@ -42,6 +50,13 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 35,
     borderTopStartRadius: 35,
     justifyContent: "center",
+  },
+
+  imagePicker: {
+    position: "absolute",
+    top: -60,
+    left: "50%",
+    marginLeft: -60,
   },
   mainText: {
     color: "#212121",
