@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import LogButton from "../../components/Button/LogButton";
 
 const SignUp = () => {
   return (
@@ -22,9 +23,9 @@ const SignUp = () => {
           <Text style={styles.showPasswordText}>Показати</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.buton}>
-        <Text style={styles.btnText}>Зареєстуватися</Text>
-      </TouchableOpacity>
+
+      <LogButton />
+
       <TouchableOpacity>
         <Text style={styles.linkText}>Вже є акаунт? Увійти</Text>
       </TouchableOpacity>
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 
-  buton: {
+  button: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",

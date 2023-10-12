@@ -21,11 +21,10 @@ const SignIn = () => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.btnText}>Зареєстуватися</Text>
-      </TouchableOpacity>
+      {/* <LogButton /> */}
+
       <TouchableOpacity>
-        <Text style={styles.linkText}>Вже є акаунт? Увійти</Text>
+        <Text style={styles.linkText}>Немає акаунту? Зареєструватися</Text>
       </TouchableOpacity>
     </View>
   );
