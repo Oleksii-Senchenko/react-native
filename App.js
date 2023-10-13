@@ -1,16 +1,16 @@
 import React from "react";
 import { StyleSheet, ImageBackground } from "react-native";
 import image from "./image/mountBG.png";
-// import SignUp from "./Screens/Auth/SignUp";
-import SignIn from "./Screens/Auth/SignIn";
+import SignUp from "./Screens/Auth/SignUp";
+// import SignIn from "./Screens/Auth/SignIn";
 
 
 
 export default function App() {
   return (
     <ImageBackground source={image} style={styles.container}>
-      {/* <SignUp /> */}
-      <SignIn />
+      <SignUp />
+      {/* <SignIn /> */}
     </ImageBackground>
   );
 }

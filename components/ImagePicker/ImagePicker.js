@@ -2,13 +2,7 @@ import { launchImageLibraryAsync } from "expo-image-picker";
 import { AntDesign } from "@expo/vector-icons";
 
 import { useState } from "react";
-import {
-  Button,
-  ImageBackground,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 const ImagePicker = () => {
   const [avatar, setAvatar] = useState(null);
@@ -28,16 +22,15 @@ const ImagePicker = () => {
 
   if (avatar) {
     content = (
-      <View style={styles.gray}>
-        <ImageBackground source={{ uri: avatar }} style={{...styles.avatarImage, ...styles.gray}}>
-          <TouchableOpacity onPress={deletePhoto} style={styles.IconContainer}>
-            <AntDesign
-              name="closecircleo"
-              color="black"
-              style={styles.closeIcon}
-            />
-          </TouchableOpacity>
-        </ImageBackground>
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: avatar }} style={styles.avatarImage} />
+        <TouchableOpacity onPress={deletePhoto} style={styles.IconContainer}>
+          <AntDesign
+            name="closecircleo"
+            color="black"
+            style={styles.closeIcon}
+          />
+        </TouchableOpacity>
       </View>
     );
   } else {
@@ -61,7 +54,10 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 16,
   },
-  gray: { borderRadius: 16 },
+  imageContainer: {
+    borderRadius: 16,
+    resizeMode: "cover",
+  },
 
   grayBackground: {
     width: 120,
