@@ -1,24 +1,27 @@
 import React from "react";
-import { StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, ImageBackground, View } from "react-native";
 import image from "./image/mountBG.png";
 import SignUp from "./Screens/Auth/SignUp";
 // import SignIn from "./Screens/Auth/SignIn";
 
-
-
 export default function App() {
   return (
-    <ImageBackground source={image} style={styles.container}>
-      <SignUp />
-      {/* <SignIn /> */}
-    </ImageBackground>
+    <View style={styles.container}>
+      <ImageBackground source={image} style={styles.immageContainer}>
+        <SignUp />
+        {/* <SignIn /> */}
+      </ImageBackground>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+
+  },
+  immageContainer: {
+    flex: 1,
     justifyContent: "flex-end",
   },
 });
