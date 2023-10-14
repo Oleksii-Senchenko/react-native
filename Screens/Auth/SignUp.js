@@ -62,7 +62,7 @@ const SignUp = () => {
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.submit}>
-                <Text style={styles.submitText}>Увійти</Text>
+                <Text style={styles.submitText}>Зареєстуватися</Text>
               </TouchableOpacity>
               <TouchableOpacity>
                 <Text style={styles.linkText}>Вже є акаунт? Увійти</Text>
@@ -148,9 +148,11 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     borderRadius: 100,
     backgroundColor: "#FF6C00",
+    marginBottom:16,
   },
   submitText: {
     color: "white",
+    fontSize: 16,
   },
   linkText: {
     fontSize: 16,
