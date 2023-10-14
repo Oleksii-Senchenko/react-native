@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-const LogButton = () => {
+const LogButton = ({ onSubmit }) => {
   return (
-    <TouchableOpacity style={styles.btn}>
+    <TouchableOpacity style={styles.btn} onPress={onSubmit}>
       <Text style={styles.btnText}>Зареєстуватися</Text>
     </TouchableOpacity>
   );
@@ -20,13 +20,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#FF6C00",
     marginBottom: 16,
     alignItems: "center",
-    justifyContent: "center", 
+    justifyContent: "center",
   },
   btnText: {
     color: "white",
     textAlign: "center",
     fontSize: 16,
     fontStyle: "normal",
-    
   },
 });
