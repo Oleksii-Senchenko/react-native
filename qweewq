@@ -1,35 +1,33 @@
 import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
+    Keyboard,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    View,
 } from "react-native";
+import LogButton from "../../components/Button/LogButton";
 import ImagePicker from "../../components/ImagePicker/ImagePicker";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
-  const [isShowKeyb, setIsShowKeyb] = useState(false);
-
-  const onSubmit = () => {
-    console.log("Credentials", `${name}+${mail} + ${pass}`);
-  };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      keyboardShouldPersistTaps="handled"
+    >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView
-          style={styles.auth}
-          // style={{ ...styles.auth, padding: isShowKeyb ? 20 : 100 }}
           behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.auth}
         >
           <View style={styles.imagePicker}>
             <ImagePicker />
@@ -43,20 +41,14 @@ const SignUp = () => {
               keyboardType="default"
               value={name}
               onChangeText={setName}
-              onFocus={() => {
-                setIsShowKeyb(true);
-              }}
             />
 
             <TextInput
               style={styles.input}
               placeholder="Email"
-              keyboardType={"email-address"}
+              keyboardType="email-address"
               onChangeText={setMail}
               value={mail}
-              onFocus={() => {
-                setIsShowKeyb(true);
-              }}
             />
             <TextInput
               style={{ ...styles.input, ...styles.inputLast }}
@@ -64,18 +56,13 @@ const SignUp = () => {
               secureTextEntry={true}
               value={pass}
               onChangeText={setPass}
-              onFocus={() => {
-                setIsShowKeyb(true);
-              }}
             />
 
             <TouchableOpacity style={styles.showPasswordBtn}>
               <Text style={styles.showPasswordText}>Показати</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.submit} onPress={onSubmit}>
-            <Text style={styles.submitText}>Зареєструватися</Text>
-          </TouchableOpacity>
+          <LogButton />
 
           <TouchableOpacity>
             <Text style={styles.linkText}>Вже є акаунт? Увійти</Text>
@@ -94,18 +81,17 @@ const styles = StyleSheet.create({
   auth: {
     backgroundColor: "white",
     width: "100%",
+    minHeight: 549, // Используем minHeight вместо height
     alignItems: "center",
     borderTopEndRadius: 35,
     borderTopStartRadius: 35,
-    justifyContent: "flex-end",
-    minHeight: 549,
+    justifyContent: "center",
   },
   imagePicker: {
     position: "absolute",
     top: -60,
     left: "50%",
     marginLeft: -60,
-    // marginBottom: 100,
   },
   mainText: {
     color: "#212121",
@@ -140,22 +126,6 @@ const styles = StyleSheet.create({
     color: "#1B4371",
     textAlign: "right",
     fontSize: 16,
-  },
-  submit: {
-    height: 50,
-    width: 354,
-    flexDirection: "column",
-    borderRadius: 100,
-    backgroundColor: "#FF6C00",
-    marginBottom: 16,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  submitText: {
-    color: "white",
-    textAlign: "center",
-    fontSize: 16,
-    fontStyle: "normal",
   },
   linkText: {
     color: "#1B4371",

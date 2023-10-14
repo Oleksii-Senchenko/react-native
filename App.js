@@ -6,6 +6,7 @@ import SignUp from "./Screens/Auth/SignUp";
 
 export default function App() {
   return (
+    
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.immageContainer}>
         <SignUp />
