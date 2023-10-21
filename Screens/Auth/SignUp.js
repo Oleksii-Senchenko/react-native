@@ -13,6 +13,11 @@ import {
 import ImagePicker from "../../components/ImagePicker/ImagePicker";
 import { useState } from "react";
 const SignUp = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+ 
+
   const [show, setShow] = useState(false);
   const showKeyboard = () => {
     setShow(true);
@@ -45,17 +50,26 @@ const SignUp = () => {
                 style={styles.input}
                 placeholder="Name"
                 onFocus={() => showKeyboard()}
+                onChangeText={(text) => {
+                  setName(text);
+                }}
               />
               <TextInput
                 style={styles.input}
                 placeholder="Email"
                 onFocus={() => showKeyboard()}
+                onChangeText={(text) => {
+                  setEmail(text);
+                }}
               />
               <TextInput
                 style={{ ...styles.input, ...styles.lastInput }}
                 placeholder="Password"
                 secureTextEntry={true}
                 onFocus={() => showKeyboard()}
+                onChangeText={(text) => {
+                  setPass(text);
+                }}
               />
               <TouchableOpacity style={styles.showPasswordBtn}>
                 <Text style={styles.showPasswordText}>Показати</Text>
@@ -148,7 +162,7 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     borderRadius: 100,
     backgroundColor: "#FF6C00",
-    marginBottom:16,
+    marginBottom: 16,
   },
   submitText: {
     color: "white",
