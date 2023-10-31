@@ -1,4 +1,5 @@
 import {
+  ImageBackground,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -11,8 +12,11 @@ import {
   View,
 } from "react-native";
 import ImagePicker from "../../components/ImagePicker/ImagePicker";
+import image from "../../image/mountBG.png";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 const SignUp = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState(null);
   const [pass, setPass] = useState(null);
   const [show, setShow] = useState(false);
@@ -25,63 +29,76 @@ const SignUp = () => {
     setShow(false);
   };
 
-
-
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <TouchableWithoutFeedback onPress={() => hideKeyboard()}>
-        <View
-          style={{
-            ...styles.contentContainer,
-            marginBottom: show ? -150 : 0,
-          }}
-        >
-          <View style={styles.avatar}>
-            <ImagePicker />
-          </View>
-          <View style={styles.view}>
-            <Text style={styles.mainText}>Увійти</Text>
+    <ImageBackground source={image} style={styles.immageContainer}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
+        <TouchableWithoutFeedback onPress={() => hideKeyboard()}>
+          <View
+            style={{
+              ...styles.contentContainer,
+              marginBottom: show ? -150 : 0,
+            }}
+          >
+            <View style={styles.avatar}>
+              <ImagePicker />
+            </View>
+            <View style={styles.view}>
+              <Text style={styles.mainText}>Увійти</Text>
 
-            <View style={styles.form}>
-              <TextInput
-                style={styles.input}
-                placeholder="Email"
-                onFocus={() => showKeyboard()}
-                onChangeText={(text) => setEmail(text)}
-              />
-              <TextInput
-                style={{ ...styles.input, ...styles.lastInput }}
-                placeholder="Password"
-                secureTextEntry={true}
-                onFocus={() => showKeyboard()}
-                onChangeText={(text) => setPass(text)}
-              />
-              <TouchableOpacity style={styles.showPasswordBtn}>
-                <Text style={styles.showPasswordText}>Показати</Text>
-              </TouchableOpacity>
+              <View style={styles.form}>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Email"
+                  onFocus={() => showKeyboard()}
+                  onChangeText={(text) => setEmail(text)}
+                />
+                <TextInput
+                  style={{ ...styles.input, ...styles.lastInput }}
+                  placeholder="Password"
+                  secureTextEntry={true}
+                  onFocus={() => showKeyboard()}
+                  onChangeText={(text) => setPass(text)}
+                />
+                <TouchableOpacity style={styles.showPasswordBtn}>
+                  <Text style={styles.showPasswordText}>Показати</Text>
+                </TouchableOpacity>
 
-              <TouchableOpacity style={styles.submit}>
-                <Text style={styles.submitText}>Увійти</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={styles.linkText}>
-                  Немає акаунту? Зареєструватися
-                </Text>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.submit}
+                  onPress={() => {
+                    navigation.navigate("Home");
+                  }}
+                >
+                  <Text style={styles.submitText}>Увійти</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("Register");
+                  }}
+                >
+                  <Text style={styles.linkText}>
+                    Немає акаунту? Зареєструватися
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    justifyContent: "flex-end",
+  },
+  immageContainer: {
+    flex: 1,
     justifyContent: "flex-end",
   },
   contentContainer: {

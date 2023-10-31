@@ -1,6 +1,10 @@
-import { View } from "react-native";
+import React from 'react'
+import { Text } from 'react-native'
 
-function PostScreen() {
-  return <View></View>;
+const PostsScreen = () => {
+  return (
+    <Text>PostsScreen</Text>
+  )
 }
-export default PostScreen;
+
+export default PostsScreen
